@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1739381298 source:c:\users\surface\documents\estructura de datos\cola\main.cpp
+	<iostream>
+	"Cola.hpp"
+
+1739294022 c:\users\surface\documents\estructura de datos\cola\cola.hpp
+	"Cola.tpp"
+
+1739381523 c:\users\surface\documents\estructura de datos\cola\cola.tpp
+	<iostream>
+
+1739894956 source:c:\users\surface\documents\estructura de datos\cola2\cola\main.cpp
+	<iostream>
+	"Cola.hpp"
+	<windows.h>
+	<cstdlib>
+	<time.h>
+
+1739382912 c:\users\surface\documents\estructura de datos\cola2\cola\cola.hpp
+	"Cola.tpp"
+
+1739555632 c:\users\surface\documents\estructura de datos\cola2\cola\cola.tpp
+	<iostream>
+
