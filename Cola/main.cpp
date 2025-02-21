@@ -3,7 +3,22 @@
 #include <windows.h>
 #include <cstdlib>
 #include <time.h>
+#include <fstream>
 using namespace std;
+
+const int MAX_CLI = 100;
+
+void leerNombres(const string& nombreArchivo, string nombrecli[], int& totalcli){
+    ifstream archivo(nombreArchivo);
+    if (archivo.is_open()){
+        string linea;
+        while (getline(archivo, linea) && totalcli < MAX_CLI){
+            if (!linea.empty()){
+                nombrecli[totalcli++] = linea;
+            }
+        } archivo.close();
+    }
+}
 
 int main()
 {
@@ -41,6 +56,7 @@ int main()
 //        ColaCopia.imprimir();
 //
 //        cout << endl;
+        
         srand (time(NULL));
 
         Cola<string> Caja1;
@@ -52,46 +68,93 @@ int main()
         int tiempoQuitar2 = (rand() % 15 +1);
         int tiempoQuitar3 = (rand() % 15 +1);
         int tiempoBanco = (rand() % 120 +120);
+        string nombreArchivo = "Nombres.txt";
+        string nombrecli[MAX_CLI];
+        int totalcli = 0;
+        int indice = 0;
+        leerNombres(nombreArchivo, nombrecli, totalcli);
+
+        cout << "Las cajas atenderan a tantos clientes puedan en " << tiempoBanco << " minutos" << endl;
+        cout << "\nEl tiempo que tarda cada uno de las personas es totalmente aleatorio" << endl;
+
+        system("pause");
+
 
         for (int i = 0; i < tiempoBanco; ++i){
-            cout << "Reloj: " << i << endl;
+            cout << "Las cajas atenderan a tantos clientes puedan en " << tiempoBanco << " minutos" << endl;
+            cout << "\nReloj: " << i << endl;
 
-            if(Caja1.EstaVacia()){
-                cout << "La caja 1 esta desocupada" << endl;
-                Caja1.Encolar("Persona");
+            if (indice < totalcli && rand() % 5 == 0){
+                Fila.Encolar(nombrecli[indice++]);
+            }
+
+            if(Caja1.EstaVacia() && !Fila.EstaVacia()){
+                string cliente = Fila.ObtenerPrimero();
+                Fila.Desencolar();
+                Caja1.Encolar(cliente);
                 tiempoQuitar1 = (rand() % 15 +1) + i;
-            }else if(tiempoQuitar1 == i){
-                cout << "La caja 1 esta ocupada por " << Caja1.ObtenerPrimero() << endl;
+            }else if(tiempoQuitar1 == i && !Caja1.EstaVacia()){
                 Caja1.Desencolar();
-            }else{
-                cout << "La caja 1 esta ocupada por " << Caja1.ObtenerPrimero() << endl;
             }
 
-            if(Caja2.EstaVacia()){
-                cout << "La caja 2 esta desocupada" << endl;
-                Caja2.Encolar("Persona");
+            cout << "Caja 1: ";
+            if (!Caja1.EstaVacia()){
+                cout << Caja1.ObtenerPrimero();
+            } else {
+                cout << "Desocupada";
+            }
+            cout << endl;
+
+            if(Caja2.EstaVacia() && !Fila.EstaVacia()){
+                string cliente = Fila.ObtenerPrimero();
+                Fila.Desencolar();
+                Caja2.Encolar(cliente);
                 tiempoQuitar2 = (rand() % 15 +1) + i;
-            }else if(tiempoQuitar2 == i){
-                cout << "La caja 2 esta ocupada por " << Caja2.ObtenerPrimero() << endl;
+            }else if(tiempoQuitar2 == i && !Caja1.EstaVacia()){
                 Caja2.Desencolar();
-            }else{
-                cout << "La caja 2 esta ocupada por " << Caja2.ObtenerPrimero() << endl;
+            }
+            
+            cout << "Caja 2: ";
+            if (!Caja2.EstaVacia()){
+                cout << Caja2.ObtenerPrimero();
+            } else {
+                cout << "Desocupada";
+            }
+            cout << endl;
+
+            if(Caja3.EstaVacia() && !Fila.EstaVacia()){
+                string cliente = Fila.ObtenerPrimero();
+                Fila.Desencolar();
+                Caja3.Encolar(cliente);
+                tiempoQuitar3 = (rand() % 15 +1) + i;
+            }else if(tiempoQuitar3 == i && !Caja1.EstaVacia()){
+                Caja3.Desencolar();
             }
 
-            if(Caja3.EstaVacia()){
-                cout << "La caja 3 esta desocupada" << endl;
-                Caja3.Encolar("Persona");
-                tiempoQuitar3 = (rand() % 15 +1) + i;
-            }else if(tiempoQuitar3 == i){
-                cout << "La caja 3 esta ocupada por " << Caja3.ObtenerPrimero() << endl;
-                Caja3.Desencolar();
-            }else{
-                cout << "La caja 3 esta ocupada por " << Caja3.ObtenerPrimero() << endl;
+            cout << "Caja 3: ";
+            if (!Caja3.EstaVacia()){
+                cout << Caja3.ObtenerPrimero();
+            } else {
+                cout << "Desocupada";
             }
+
+            cout << endl;
+
+            cout << "Clientes en espera:\n";
+            Fila.imprimir();
 
             Sleep(1000);
             system("cls");
         }
+
+        cout << "Clientes atendidos por la Caja 1: ";
+        Caja1.imprimir();
+        cout << "Clientes atendidos por la Caja 2: ";
+        Caja2.imprimir(); 
+        cout << "Clientes atendidos por la Caja 3: ";
+        Caja3.imprimir();
+        cout << "Clientes que no fueron atendidos:";
+        Fila.imprimir();
 
     }catch(const char *mensaje){
         cerr << mensaje;

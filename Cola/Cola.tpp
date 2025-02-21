@@ -79,7 +79,7 @@ template <typename Tipo>
 int Cola<Tipo>::CantidadElementos(){
     return numElem;
 }
-//Conocer si está vacía
+//Conocer si estï¿½ vacï¿½a
 template <typename Tipo>
 bool Cola<Tipo>::EstaVacia() const{
     return numElem == 0;
@@ -96,7 +96,7 @@ void Cola<Tipo>::imprimir() const{
     Elemento *aux = ultimo -> siguiente;
     int i = 0;
     while(i != (numElem)){
-        std::cout << aux -> valor <<  ",";
+        std::cout << aux -> valor <<  std::endl;
         aux = aux -> siguiente;
         ++i;
     }
