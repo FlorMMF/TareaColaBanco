@@ -22,16 +22,17 @@
 1739555632 c:\users\surface\documents\estructura de datos\cola2\cola\cola.tpp
 	<iostream>
 
-1740027530 source:c:\users\dell\documents\flor\lcc\cuarto semestre\estructuradatos\tareacolabanco\cola\main.cpp
+1740107864 source:c:\users\dell\documents\flor\lcc\cuarto semestre\estructuradatos\tareacolabanco\cola\main.cpp
 	<iostream>
 	"Cola.hpp"
 	<windows.h>
 	<cstdlib>
 	<time.h>
+	<fstream>
 
-1740019790 c:\users\dell\documents\flor\lcc\cuarto semestre\estructuradatos\tareacolabanco\cola\cola.hpp
+1740112466 c:\users\dell\documents\flor\lcc\cuarto semestre\estructuradatos\tareacolabanco\cola\cola.hpp
 	"Cola.tpp"
 
-1740019790 c:\users\dell\documents\flor\lcc\cuarto semestre\estructuradatos\tareacolabanco\cola\cola.tpp
+1740102861 c:\users\dell\documents\flor\lcc\cuarto semestre\estructuradatos\tareacolabanco\cola\cola.tpp
 	<iostream>
 
