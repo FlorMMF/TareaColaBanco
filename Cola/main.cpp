@@ -5,6 +5,21 @@
 #include <time.h>
 #include <fstream>
 using namespace std;
+/**
+
+ * \file main.cpp
+
+ * Este archivo simula 3 cajas de banco y una fila de espera, los nombres de los clientes son tomados desde un archivo .txt llamado "Nombres.txt"
+
+ * En cuanto alguna de las cajas se desocupa, el primer cliente en la fila de espera toma su lugar y la usa por un periodo de tiempo aleatorio
+
+ * Al finalizar el tiempo de la simulación se imprimen los nombres de cada una de las personas que atendió cada una de las cajas en orden de llegada y también a los que no se atenderion
+
+ * \author Flor Machado y Elias Peregrina
+
+ * \date 21/02/2025
+
+ */
 
 const int MAX_CLI = 100;
 
@@ -111,7 +126,7 @@ int main()
             cout << "Clientes en espera:\n";
             Fila.imprimir();
 
-            Sleep(300);
+            Sleep(1000);
             system("cls");
         }
 
